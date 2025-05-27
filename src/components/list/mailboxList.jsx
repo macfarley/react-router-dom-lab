@@ -1,10 +1,15 @@
 
-const MailboxList = ({ }) => {
-    return (
-        // This is a placeholder for the MailboxList component
-        <div>
-            <h2>Mailbox List</h2>
-            <p>This is where the list of mailboxes will be displayed.</p>
-        </div>
-    )}
+const MailboxList = (props) => {
+  const { mailboxes } = props;
+  return (
+    <ul>
+      {mailboxes.map(mailbox => (
+        <li key={mailbox._id}
+        className="mail-box">
+          <strong>Owner:</strong> {mailbox.boxOwner} - <strong>Size:</strong> {mailbox.size}
+        </li>
+      ))}
+    </ul>
+  );
+}
 export default MailboxList

@@ -1,13 +1,14 @@
+import { Link } from 'react-router';
 
 const NavBar = () => {
-    //placeholder for NavBar component
+    
     return (
         <nav>
             <h1>Mailbox Manager</h1>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#mailboxes">Mailboxes</a></li>
-                <li><a href="#settings">Settings</a></li>
+                <li><Link to={"/"}>Home</Link></li>
+                <li><Link to={"/mailboxes"}>Mailboxes</Link></li>
+                <li><Link to={"/new"}>New Mailbox</Link></li>
             </ul>
         </nav>
     )
