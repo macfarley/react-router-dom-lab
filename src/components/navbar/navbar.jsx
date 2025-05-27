@@ -4,7 +4,7 @@ const NavBar = () => {
     
     return (
         <nav>
-            <h1>Mailbox Manager</h1>
+            <h3>Post Office Links</h3>
             <ul>
                 <li><Link to={"/"}>Home</Link></li>
                 <li><Link to={"/mailboxes"}>Mailboxes</Link></li>

@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 
-const MailboxForm = () => {
+const MailboxForm = (props) => {
+    const { addMailbox } = props;
 //this component is used to create a new mailbox
     const [formData, setFormData] = useState({ boxOwner: "", size: "Small" });
 

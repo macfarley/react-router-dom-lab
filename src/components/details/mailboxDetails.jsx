@@ -1,12 +1,24 @@
+import { useParams } from "react-router-dom";
 
-const MailboxDetails = () => {
-    // This is a placeholder for the MailboxDetails component
+const MailboxDetails = ({ mailboxes }) => {
+    const { id } = useParams();
+    const mailbox = mailboxes.find((box) => box._id === parseInt(id));
+
+    if (!mailbox) {
+        return <p>Mailbox not found!</p>;
+    }
+
     return (
-        <div>
-            <h2>Mailbox Details</h2>
-            <p>This is where the details of a selected mailbox will be displayed.</p>
+        <div className="mail-box">
+            <p>P.O. Box #{mailbox._id}</p>
+            <p>
+                <strong>Owner:</strong> {mailbox.boxOwner}
+            </p>
+            <p>
+                <strong>Size:</strong> {mailbox.size}
+            </p>
         </div>
-    )
-}
+    );
+};
 
-export default MailboxDetails
+export default MailboxDetails;

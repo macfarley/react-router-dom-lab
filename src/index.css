@@ -57,7 +57,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: darkgray;
   }
   a:hover {
     color: #747bff;
@@ -91,7 +91,11 @@ li {
 
 .mail-box {
   border: 2px solid white;
+  display: flex;
+  flex-direction: column;
   padding: 20px;
+  width: fit-content;
+  aspect-ratio: 1 / 1;
 }
 
 form {
@@ -114,3 +118,21 @@ textarea {
 button {
   background-color: #535bf2;
 }
+.mailbox-list {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  }
+
+.mailbox-list > div {
+  flex: 1 1 0;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+}
+

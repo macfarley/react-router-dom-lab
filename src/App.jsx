@@ -1,11 +1,13 @@
-import { Route } from "react-router";
+import { Routes, Route } from "react-router-dom";
 import MailboxDetails from "./components/details/mailboxDetails.jsx";
 import MailboxForm from "./components/form/mailboxForm.jsx";
 import MailboxList from "./components/list/mailboxList.jsx";
 import NavBar from "./components/navbar/navbar.jsx";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const [mailboxes, setMailboxes] = useState([
+const App = () => {
+  const [mailboxes, setMailboxes] = useState([
     {
       _id: 1,
       boxOwner: "John Lennon",
@@ -26,10 +28,8 @@ const [mailboxes, setMailboxes] = useState([
       boxOwner: "Ringo Starr",
       size: "Small",
     },
-    ]);
-
-const App = () => {
-
+  ]);
+  const navigate = useNavigate();
 
   const addMailbox = (formData) => {
     const newMailbox = {
@@ -38,26 +38,35 @@ const App = () => {
       size: formData.size,
     };
     setMailboxes((prev) => [...prev, newMailbox]);
-    
-  }
+    navigate("/mailboxes");
+  };
 
   return (
     <>
-      <NavBar /> //always shown
-      <Route path="/" element={<h1>Post Office</h1>} /> //landing page
-      <Route path="/mailboxes" //list of mailboxes
-        element={<MailboxList 
-          mailboxes={mailboxes}
-           />} />
-      <Route path="/new" //form to create a new mailbox
-        element={<MailboxForm
-          mailboxes={mailboxes}
-          onAddMailbox={addMailbox}
-      />} />     
-      <Route 
-        path="/details" //view one mailbox
-        element={<MailboxDetails />} />
-
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<h1>Post Office</h1>} />
+        <Route
+          path="/mailboxes"
+          element={<MailboxList 
+            mailboxes={mailboxes} />}
+        />
+        <Route
+          path="/new"
+          element={<MailboxForm 
+            addMailbox={addMailbox}
+            mailboxes={mailboxes} />}
+        />
+        <Route
+          path="/mailboxes/:id"
+          element={<MailboxDetails 
+            mailboxes={mailboxes} />}
+        />
+        <Route
+          path="*"
+          element={<h1>404 - Page Not Found</h1>}
+        />
+      </Routes>
     </>
   );
 };
